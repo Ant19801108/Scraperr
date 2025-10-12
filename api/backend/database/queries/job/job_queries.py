@@ -44,7 +44,10 @@ async def get_queued_job():
         )
         result = await session.execute(stmt)
         job = result.scalars().first()
-        LOG.info(f"Got queued job: {job}")
+
+        if job:
+            LOG.info(f"Got queued job: {job}")
+
         return job
 
 
