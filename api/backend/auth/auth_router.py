@@ -81,7 +81,7 @@ async def read_users_me(current_user: User = Depends(get_current_user)):
 @handle_exceptions(logger=LOG)
 async def check_auth():
     return {
-        "registration": os.environ.get("REGISTRATION_ENABLED", "True") == "True",
+        "registration": os.environ.get("REGISTRATION_ENABLED", "true").lower() == "true",
         "recordings_enabled": os.environ.get("RECORDINGS_ENABLED", "true").lower()
         == "true",
     }
