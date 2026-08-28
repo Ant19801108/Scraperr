@@ -1,5 +1,5 @@
 # Build next dependencies
-FROM node:23.1-slim
+FROM node:22-slim
 WORKDIR /app
 
 # Copy package files first to leverage Docker cache
@@ -21,3 +21,6 @@ COPY src /app/src
 RUN yarn build
 
 EXPOSE 3000
+
+# Serve the production build (Next.js server build, not static export)
+CMD ["npm", "run", "start"]

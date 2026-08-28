@@ -1,24 +1,27 @@
 <div align="center">
-  <img src="https://github.com/jaypyles/www-scrape/blob/master/docs/logo_picture.png" alt="Scraperr Logo" width="250px">
-  
+  <img src="docs/logo_picture.png" alt="Scraperr Logo" width="250px">
+
   **A powerful self-hosted web scraping solution**
-  
+
   <div>
-    <img src="https://img.shields.io/badge/MongoDB-%234ea94b.svg?style=for-the-badge&logo=mongodb&logoColor=white" alt="MongoDB" />
     <img src="https://img.shields.io/badge/FastAPI-005571?style=for-the-badge&logo=fastapi" alt="FastAPI" />
     <img src="https://img.shields.io/badge/Next-black?style=for-the-badge&logo=next.js&logoColor=white" alt="Next JS" />
+    <img src="https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white" alt="TypeScript" />
+    <img src="https://img.shields.io/badge/SQLite-003B57?style=for-the-badge&logo=sqlite&logoColor=white" alt="SQLite" />
     <img src="https://img.shields.io/badge/tailwindcss-%2338B2AC.svg?style=for-the-badge&logo=tailwind-css&logoColor=white" alt="TailwindCSS" />
   </div>
 </div>
+
+> ⚠️ **Maintained fork.** This is a community-maintained fork of the
+> [original Scraperr](https://github.com/jaypyles/Scraperr) (archived Oct 2025).
+> We keep it alive: refreshed dependencies, Docker builds, and bug fixes.
 
 ## 📋 Overview
 
 Scrape websites without writing a single line of code.
 
-> 📚 **[Check out the docs](https://scraperr-docs.pages.dev)** for a comprehensive quickstart guide and detailed information.
-
 <div align="center">
-  <img src="https://github.com/jaypyles/www-scrape/blob/master/docs/main_page.png" alt="Scraperr Main Interface" width="800px">
+  <img src="docs/main_page.png" alt="Scraperr Main Interface" width="800px">
 </div>
 
 ## ✨ Key Features
@@ -30,19 +33,42 @@ Scrape websites without writing a single line of code.
 - **Media Downloads**: Automatically download images, videos, and other media
 - **Results Visualization**: View scraped data in a structured table format
 - **Data Export**: Export your results in markdown and csv formats
-- **Notifcation Channels**: Send completion notifcations, through various channels
+- **Notification Channels**: Send completion notifications through various channels
+
+## 🧱 Tech Stack
+
+- **Backend:** FastAPI (Python 3.10, PDM), SQLAlchemy, SQLite (default, `DATABASE_URL` overridable)
+- **Frontend:** Next.js 14 / TypeScript, TailwindCSS, Redux
+- **Scraping engines:** requests-html, selenium-wire, Playwright, Camoufox
+- **Auth:** JWT (email/password) + optional OpenAI (LLM) assistant
 
 ## 🚀 Getting Started
 
-### Docker
+### Docker (recommended)
 
 ```bash
-make up
+docker compose up -d
 ```
 
-### Helm
+- Frontend: http://localhost:3000
+- API docs: http://localhost:8000/docs
 
-> Refer to the docs for helm deployment: https://scraperr-docs.pages.dev/guides/helm-deployment
+The first build takes a while (the API image installs Playwright + Camoufox
+browsers). To use the pre-built images from Docker Hub instead, run:
+
+```bash
+docker compose -f docker-compose.hub.yml up -d
+```
+
+### Configuration (optional)
+
+| Variable | Default | Purpose |
+|----------|---------|---------|
+| `NEXT_PUBLIC_API_URL` | `http://scraperr_api:8000` | API URL used by the Next.js server-side proxy |
+| `SERVER_URL` | `http://scraperr_api:8000` | API URL used in server-side props |
+| `DATABASE_URL` | `sqlite+aiosqlite:///data/database.db` | SQLAlchemy connection string |
+| `OPENAI_KEY` | _(empty)_ | Enables the AI assistant feature |
+| `DEFAULT_USER_EMAIL` / `DEFAULT_USER_PASSWORD` | _(empty)_ | Pre-seeded admin user |
 
 ## ⚖️ Legal and Ethical Guidelines
 
@@ -54,18 +80,10 @@ When using Scraperr, please remember to:
 
 > **Disclaimer**: Scraperr is intended for use only on websites that explicitly permit scraping. The creator accepts no responsibility for misuse of this tool.
 
-## 💬 Join the Community
-
-Get support, report bugs, and chat with other users and contributors.
-
-👉 [Join the Scraperr Discord](https://discord.gg/89q7scsGEK)
-
 ## 📄 License
 
 This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
 
 ## 👏 Contributions
 
-Development made easier with the [webapp template](https://github.com/jaypyles/webapp-template).
-
-To get started, simply run `make build up-dev`.
+Development made easier with the [webapp template](https://github.com/jaypyles/webapp-template). Contributions and bug reports are welcome.

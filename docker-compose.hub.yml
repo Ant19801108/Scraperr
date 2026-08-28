@@ -1,10 +1,10 @@
+# Quick-start using the pre-built images from Docker Hub.
+# No local build required. The author's original images are used as-is.
 services:
   scraperr:
-    build:
-      context: .
-      dockerfile: docker/frontend/Dockerfile
-    image: scraperr-frontend:local
-    container_name: scraperr
+    image: jpyles0524/scraperr:latest
+    container_name: scraperr_frontend
+    command: ["sh", "-c", "cd /app && npm run start"]
     environment:
       - NEXT_PUBLIC_API_URL=http://scraperr_api:8000
       - SERVER_URL=http://scraperr_api:8000
@@ -16,11 +16,7 @@ services:
       - web
 
   scraperr_api:
-    init: true
-    build:
-      context: .
-      dockerfile: docker/api/Dockerfile
-    image: scraperr-api:local
+    image: jpyles0524/scraperr_api:latest
     container_name: scraperr_api
     environment:
       - LOG_LEVEL=INFO

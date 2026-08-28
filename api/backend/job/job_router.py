@@ -214,11 +214,19 @@ async def schedule_cron_job(
     if not queried_job:
         return JSONResponse(status_code=404, content={"error": "Related job not found"})
 
+    # Fix #100: insert_job_from_cron_job expects a dict, but queried_job is a
+    # SQLAlchemy model object (which is not a mapping). Convert columns to a
+    # plain dict before scheduling, matching start_cron_scheduler().
+    job_dict = {
+        c.key: getattr(queried_job, c.key)
+        for c in queried_job.__table__.columns
+    }
+
     scheduler.add_job(
         insert_job_from_cron_job,
         get_cron_job_trigger(cron_job.cron_expression),
         id=cron_job.id,
-        args=[queried_job],
+        args=[job_dict],
     )
 
     return JSONResponse(content={"message": "Cron job scheduled successfully."})
