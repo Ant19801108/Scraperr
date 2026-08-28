@@ -70,6 +70,16 @@ docker compose -f docker-compose.hub.yml up -d
 | `OPENAI_KEY` | _(empty)_ | Enables the AI assistant feature |
 | `DEFAULT_USER_EMAIL` / `DEFAULT_USER_PASSWORD` | _(empty)_ | Pre-seeded admin user |
 
+## 💬 Support & Custom Work
+
+**This fork is actively maintained.** Need a custom scraper/parser for your site,
+a specific feature, or help with self-hosting?
+
+- 🤖 **Telegram:** [@medbot1_bot](https://t.me/medbot1_bot)
+  > Нужен кастомный парсер или доработка? Напиши нашему боту.
+- 🗂 **Portfolio:** [github.com/Ant19801108](https://github.com/Ant19801108)
+- 🌐 **Main site:** [Ant Mystik](http://207.180.196.145/)
+
 ## ⚖️ Legal and Ethical Guidelines
 
 When using Scraperr, please remember to:
