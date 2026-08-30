@@ -80,6 +80,11 @@ a specific feature, or help with self-hosting?
 - 🗂 **Portfolio:** [github.com/Ant19801108](https://github.com/Ant19801108)
 - 🌐 **Main site:** [Ant Mystik](http://207.180.196.145/)
 
+**❤️ Support this fork** (hosting + maintenance are community-funded):
+
+- **ETH (Ethereum / ERC-20):** `0x8AFC3Cc28fFC4cde92D13Bf6DAf6447f5227CF93`
+- **USDT (TON):** `UQAgrUTTUyDnKbC2gQsusk4Fk7n6Nu86Sx8X5rT14FqsrF64`
+
 ## ⚖️ Legal and Ethical Guidelines
 
 When using Scraperr, please remember to:
